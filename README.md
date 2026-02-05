@@ -2,81 +2,287 @@
 
 
 
-An AI-powered HR analytics dashboard that allows users to ask questions
-
-about an HR dataset using natural language.
+An AI-powered \*\*chat-based HR analytics dashboard\*\* that allows users to ask natural language questions about HR data and receive accurate, data-backed answers.
 
 
 
-\## 🔍 Features
-
-\- Chat-based interface built with Streamlit
-
-\- Text-to-SQL pipeline for accurate analytics
-
-\- Local AI model (1.5B) + Cloud AI model (7B)
-
-\- Conversation memory for follow-up questions
-
-\- SQL-backed answers using structured HR data
+This project uses a \*\*Text-to-SQL approach\*\*, supports \*\*dual AI models (local and cloud)\*\*, and maintains \*\*chat memory\*\* for follow-up questions. The dashboard is built using \*\*Streamlit\*\* and styled to match \*\*Solutions by stc\*\* branding.
 
 
 
-\## 🧠 How it works
-
-1\. User asks a question in plain English
-
-2\. The AI converts the question into SQL
-
-3\. SQL is executed on the HR dataset
-
-4\. Results are returned in natural language
-
-5\. Chat memory preserves conversation context
+---
 
 
 
-\## 📊 Dataset
-
-IBM HR Employee Attrition Dataset (CSV)
+\## 🔹 Features
 
 
 
-\## 🖼️ Demo
+\- 💬 Chat-based interface for HR analytics
 
-Below are screenshots and a GIF showing:
+\- 🧠 Natural language → SQL conversion (Text-to-SQL)
 
-\- The dashboard UI
+\- ⚡ Dual-model architecture:
 
-\- Example questions and answers
+&nbsp; - \*\*Local model (1.5B)\*\* for fast responses
 
-\- Chat memory in action
+&nbsp; - \*\*Cloud model (7B via Groq API)\*\* for higher accuracy
+
+\- 🔁 Automatic fallback to cloud model when needed
+
+\- 🧾 SQL-backed answers using structured HR data
+
+\- 📊 Tabular results displayed when applicable
+
+\- 🧠 Chat memory for follow-up questions
+
+\- 🎨 Branded dashboard UI (Solutions by stc identity)
 
 
 
-!\[Dashboard](assets/dashboard.png)
-
-!\[Answered Question](assets/answered\_question.png)
+---
 
 
 
-!\[Chat Memory Demo](assets/chat\_memory.gif)
+\## 🔹 Technologies Used
 
 
 
-\## ⚙️ Setup Instructions
+\- Python
+
+\- Streamlit
+
+\- Pandas
+
+\- DuckDB
+
+\- Groq API
+
+\- Hugging Face / Local LLM
+
+\- Text-to-SQL prompting
+
+\- Git \& GitHub
+
+
+
+---
+
+
+
+\## 🔹 Project Structure
+
+
+
+hr-analytics-chatbot/
+
+│
+
+├── app/
+
+│ ├── app.py
+
+│ └── assets/
+
+│ ├── dashboard.png
+
+│ ├── answered\_question.png
+
+│ └── chat\_memory.gif
+
+│
+
+├── models/
+
+│ ├── local\_model.py
+
+│ └── cloud\_model.py
+
+│
+
+├── data/
+
+│ └── WA\_Fn-UseC\_-HR-Employee-Attrition.csv
+
+│
+
+├── requirements.txt
+
+├── environment.yml
+
+├── README.md
+
+└── .gitignore
+
+
+
+
+
+---
+
+
+
+\## 🔹 How the Chatbot Works
+
+
+
+1\. The user asks a question in plain English  
+
+2\. The AI model converts the question into a SQL query  
+
+3\. The SQL query is executed on the HR dataset using DuckDB  
+
+4\. Results are returned as a natural language explanation and a table (when applicable)  
+
+5\. Conversation history is stored in session state to support follow-up questions  
+
+
+
+---
+
+
+
+\## 🔹 Dual-Model Approach
+
+
+
+The chatbot uses two AI models:
+
+
+
+\### Local Model (1.5B)
+
+\- Runs locally
+
+\- Faster response time
+
+\- Used by default
+
+
+
+\### Cloud Model (7B)
+
+\- Accessed via Groq API
+
+\- Higher accuracy
+
+\- Automatically used when:
+
+&nbsp; - The local model fails
+
+&nbsp; - SQL is invalid
+
+&nbsp; - The result is unreliable
+
+
+
+This approach balances \*\*performance and accuracy\*\*.
+
+
+
+---
+
+
+
+\## 🔹 Why Text-to-SQL (Not RAG)?
+
+
+
+\- The HR dataset is \*\*structured (CSV / tabular data)\*\*
+
+\- Text-to-SQL ensures:
+
+&nbsp; - Accurate counts and percentages
+
+&nbsp; - No hallucinated values
+
+&nbsp; - Transparent and explainable queries
+
+
+
+RAG is more suitable for \*\*unstructured data\*\* such as documents, policies, or PDFs, which are outside the scope of this project.
+
+
+
+---
+
+
+
+\## 🔹 Chat Memory
+
+
+
+The chatbot maintains \*\*session-level memory\*\*, allowing users to ask follow-up questions such as:
+
+
+
+\- “What about only the Sales department?”
+
+\- “Now compare it with Research \& Development”
+
+
+
+This is implemented using \*\*Streamlit session state\*\*.
+
+
+
+---
+
+
+
+\## 📸 Screenshots \& Demo
+
+
+
+\### Dashboard Interface
+
+!\[Dashboard UI](app/assets/dashboard.png)
+
+
+
+\### Example Question \& Answer
+
+!\[Answered Question](app/assets/answered\_question.png)
+
+
+
+\### Chat Memory Demonstration
+
+The GIF below shows the chatbot answering two related questions, demonstrating that conversation memory is preserved.
+
+
+
+!\[Chat Memory Demo](app/assets/chat\_memory.gif)
+
+
+
+---
+
+
+
+\## 🔹 Environment Setup
+
+
+
+\### Conda (Recommended)
 
 
 
 ```bash
 
-conda create -n hr\_analysis python=3.10
+conda env create -f environment.yml
 
 conda activate hr\_analysis
 
 pip install -r requirements.txt
 
 streamlit run app/app.py
+
+```
+
+
+
+
 
 
 
