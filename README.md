@@ -34,28 +34,30 @@ This project uses a **Text-to-SQL approach**, supports **dual AI models (local a
 
 ---
 
-## 🔹 Project Structure
+## 📁 Project Structure
 
+```text
 hr-analytics-chatbot/
 │
 ├── app/
-│ ├── app.py
-│ └── assets/
-│ ├── dashboard.png
-│ ├── answered_question.png
-│ └── chat_memory.gif
+│   ├── app.py
+│   └── assets/
+│       ├── dashboard.png
+│       ├── answered_question.png
+│       └── chat_memory.gif
 │
 ├── models/
-│ ├── local_model.py
-│ └── cloud_model.py
+│   ├── local_model.py
+│   └── cloud_model.py
 │
 ├── data/
-│ └── WA_Fn-UseC_-HR-Employee-Attrition.csv
+│   └── WA_Fn-UseC_-HR-Employee-Attrition.csv
 │
 ├── requirements.txt
 ├── environment.yml
 ├── README.md
 └── .gitignore
+```
 
 
 ---
